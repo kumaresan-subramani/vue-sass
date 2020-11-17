@@ -24,7 +24,7 @@ vue create example
 
 The cool thing is that it’s an interactive process. You need to pick a preset. By default, there is one preset that’s providing Babel and ESLint integration:
 
-img1
+img1(./images/img1.jpg)
 
 I’m going to press the down arrow ⬇️ and manually choose the features I want:
 
