@@ -1,4 +1,5 @@
 const path = require("path");
+const globImporter = require('node-sass-glob-importer');
 
 module.exports = {
   chainWebpack: config => {
@@ -11,25 +12,12 @@ module.exports = {
 
 function addStyleResource(rule) {
   rule
-    .use("style-resource")
-    .loader("style-resources-loader")
+    .use("sass-loader")
+    .loader("sass-loader")
     .options({
-      patterns: [
-        path.resolve(__dirname, "./node_modules/@syncfusion"),
-      ]
+      sassOptions: {
+        importer: globImporter(),
+        includePaths: ["node_modules/@syncfusion"]
+    }
     });
 }
-
-// chainWebpack: config => {
-//   config.module
-//     .rule('vue')
-//     .use('sass-loader')
-//       .loader('sass-loader')
-//       .tap(options => {
-//         // modify the options...
-//         options ={
-//             includePaths: ["node_modules/@syncfusion",""]
-//         }
-//         return options
-//       })
-// },
