@@ -6,18 +6,8 @@ module.exports = {
     types.forEach(type =>
       addStyleResource(config.module.rule("scss").oneOf(type))
     );
-  }
+  }  
 };
-
-module.exports = {
-    css: {
-      loaderOptions: {
-        sass: {
-        includePaths: ["./node_modules/@syncfusion"]
-        }
-      }
-    }
-  }
 
 function addStyleResource(rule) {
   rule
@@ -25,8 +15,21 @@ function addStyleResource(rule) {
     .loader("style-resources-loader")
     .options({
       patterns: [
-        path.resolve(__dirname, "./node_modules/@syncfusion/ej2-base/styles/material.scss"),
-        path.resolve(__dirname, "./node_modules/@syncfusion/ej2-vue-grids/styles/material.scss"),
+        path.resolve(__dirname, "./node_modules/@syncfusion"),
       ]
     });
 }
+
+// chainWebpack: config => {
+//   config.module
+//     .rule('vue')
+//     .use('sass-loader')
+//       .loader('sass-loader')
+//       .tap(options => {
+//         // modify the options...
+//         options ={
+//             includePaths: ["node_modules/@syncfusion",""]
+//         }
+//         return options
+//       })
+// },
